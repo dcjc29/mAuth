@@ -1,8 +1,8 @@
 name: mAuth
-description: A new Flutter package project.
+description: A Flutter to manage authentication services using services provided in MongoDB.
 version: 0.0.1
-author:
-homepage:
+author: Dureksha Wasala<durekshawasala@gmail.com>,Pamuditha Maduranga<pamudithamaduranga@gmail.com>,Dinuwan Bhagya<dinubhagya97@gmail.com>
+homepage: https://github.com/dcjc29/mAuth
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
