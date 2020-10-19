@@ -1,3 +1,4 @@
+// ignore: library_names
 library mAuth;
 
 /// A Calculator.
