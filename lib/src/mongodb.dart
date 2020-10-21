@@ -7,7 +7,7 @@ class MongoDB {
 
   MongoDB({this.url});
 
-  static Db _instance;
+  static Db instance;
   static MongoDB _mongoDB;
 
   Future<String> createConnection({MongoDB dbObject}) async {
@@ -32,12 +32,12 @@ class MongoDB {
   }
 
   static Future<Db> getInstance({MongoDB dbObject}) async {
-    if (_instance == null) {
+    if (instance == null) {
       _mongoDB = dbObject;
-      _instance = await Db.create(dbObject.url);
-      await _instance.open();
-      return _instance;
+      instance = await Db.create(dbObject.url);
+      await instance.open();
+      return instance;
     }
-    return _instance;
+    return instance;
   }
 }
