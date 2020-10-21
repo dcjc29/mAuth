@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:example/auth_functions.dart';
+import 'package:example/register.dart';
 import 'package:flutter/material.dart';
 import 'package:mAuth/mAuth.dart';
 
@@ -64,6 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => AuthFunctions()),
+                  );
+                }),
+            RaisedButton(
+                child: Text("Register"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Register()),
                   );
                 })
           ],

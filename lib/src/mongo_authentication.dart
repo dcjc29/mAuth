@@ -27,6 +27,11 @@ class MongoAuth {
     });
   }
 
+  Future<MongoUser> createUserWithEmailAndPassword(
+      String email, String password) async {
+    await collection.findOne({"email": email}).then((value) {});
+  }
+
   hashPassword(String password) {
     var key = utf8.encode(password);
     var bytes = utf8.encode("**SceretByteCode**");

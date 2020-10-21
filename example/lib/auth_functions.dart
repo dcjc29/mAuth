@@ -46,6 +46,8 @@ class AuthFunctionsState extends State<AuthFunctions> {
   }
 
   forgotpassword() async {
-    await mongoAuth.forgotPassword("pamu@gmail").then((value) => print(value));
+    await mongoAuth
+        .forgotPassword("pamu@gmail")
+        .then((value) => print("Print ${value}"));
   }
 }
