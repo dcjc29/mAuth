@@ -2,6 +2,9 @@
 
 import 'package:mAuth/mAuth.dart';
 import 'package:mongo_dart/mongo_dart.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
+import '../mAuth.dart';
 import 'mongo_user.dart';
 
 class MongoAuth {
@@ -22,5 +25,15 @@ class MongoAuth {
       print(user.name);
       return user;
     });
+
+    hashPassword(String password) {
+      var key = utf8.encode(password);
+      var bytes = utf8.encode("**SceretByteCode**");
+
+      var hmacSha256 = new Hmac(sha256, key); // HMAC-SHA256
+      var digest = hmacSha256.convert(bytes);
+
+      return digest.toString();
+    }
   }
 }
