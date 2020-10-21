@@ -43,7 +43,7 @@ class AuthFunctionsState extends State<AuthFunctions> {
   }
 
   forgotpassword() async {
-    await mongoAuth.forgotPassword("pamu@gmail").then((value){
+    await mongoAuth.forgotPassword("pamu@gmail").then((value) {
       String user = value;
       print(user);
     });

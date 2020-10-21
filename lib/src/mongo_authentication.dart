@@ -2,8 +2,6 @@ import 'dart:math';
 import 'package:mAuth/mAuth.dart';
 import 'package:mAuth/src/services.dart';
 import 'package:mongo_dart/mongo_dart.dart';
-import 'package:crypto/crypto.dart';
-import 'dart:convert';
 import 'mongo_user.dart';
 
 class MongoAuth {
@@ -39,14 +37,23 @@ class MongoAuth {
     }
   }
 
-
-  hashPassword(String password) {
-    var key = utf8.encode(password);
-    var bytes = utf8.encode("**SceretByteCode**");
-
-    var hmacSha256 = new Hmac(sha256, key); // HMAC-SHA256
-    var digest = hmacSha256.convert(bytes);
-
-    return digest.toString();
+  Future<String> createUserWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      Map<String, dynamic> doc = await collection.findOne({"email": email});
+      if (doc != null) {
+        return "Already_Have_an_Account_entred_Email";
+      } else {
+        var hashpass = services.hashPassword(password);
+        print(hashpass);
+        return "User_Created";
+      }
+    } on MongoDartError catch (e) {
+      print(e.message);
+      return e.message;
+    } catch (e) {
+      print(e);
+      return e.toString();
+    }
   }
 }
