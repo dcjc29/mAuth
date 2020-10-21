@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:mAuth/mAuth.dart';
 import 'package:mAuth/src/services.dart';
 import 'package:mongo_dart/mongo_dart.dart';
@@ -45,7 +44,16 @@ class MongoAuth {
         return "Already_Have_an_Account_entred_Email";
       } else {
         var hashpass = services.hashPassword(password);
-        print(hashpass);
+        var uid = services.uidGenarate();
+        print(uid);
+        MongoUser user = new MongoUser(
+          email: email,
+          name: "Dinu",
+          password: hashpass,
+          uid: uid,
+        );
+        await addCollection(user);
+
         return "User_Created";
       }
     } on MongoDartError catch (e) {
