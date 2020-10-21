@@ -18,8 +18,9 @@ class AuthFunctionsState extends State<AuthFunctions> {
     mongoAuth = new MongoAuth();
     instance = MongoDB.getInstance();
     print("Instance ${instance.toString()}");
-    MongoUser user = new MongoUser(email: "pamu@gmail",password: "123",name: "pamu");
-    mongoAuth.addCollection(instance, user);
+    MongoUser user = new MongoUser(
+        email: "pamuditha@gmail", password: "123", name: "Maduranga");
+    // mongoAuth.addCollection(user);
   }
 
   @override
@@ -28,6 +29,23 @@ class AuthFunctionsState extends State<AuthFunctions> {
       appBar: AppBar(
         title: Text("Auth functions"),
       ),
+      body: Container(
+        child: Column(
+          children: [
+            RaisedButton(
+                child: Text("Fogot Password"),
+                onPressed: () {
+                  forgotpassword();
+                  // Future<MongoUser> emailvalidation =
+                  //     mongoAuth.forgotPassword("pamu@gmail");
+                })
+          ],
+        ),
+      ),
     );
+  }
+
+  forgotpassword() async {
+    await mongoAuth.forgotPassword("pamu@gmail").then((value) => print(value));
   }
 }

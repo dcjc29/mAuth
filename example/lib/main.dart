@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //replace YOUR_URL with mongo db url
       _mongoDB = MongoDB(
           url:
-              "YOUR_URL");
+              "mongodb+srv://dev:cyberkode_dev@cluster0-gylme.gcp.mongodb.net/test?retryWrites=true&w=majority");
     });
     _mongoDB.createConnection(dbObject: _mongoDB).then((value) => log(value));
   }

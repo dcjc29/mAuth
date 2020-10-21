@@ -23,13 +23,6 @@ class MongoUser {
     this.tempCode = user['tempCode'];
   }
 
-  // String get email => email;
-  // String get password => password;
-  // String get name => name;
-  // String get username => username;
-  // String get uid => uid;
-  // String get claims => claims;
-  // String get tempCode => tempCode;
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
