@@ -25,15 +25,15 @@ class MongoAuth {
       print(user.name);
       return user;
     });
+  }
 
-    hashPassword(String password) {
-      var key = utf8.encode(password);
-      var bytes = utf8.encode("**SceretByteCode**");
+  hashPassword(String password) {
+    var key = utf8.encode(password);
+    var bytes = utf8.encode("**SceretByteCode**");
 
-      var hmacSha256 = new Hmac(sha256, key); // HMAC-SHA256
-      var digest = hmacSha256.convert(bytes);
+    var hmacSha256 = new Hmac(sha256, key); // HMAC-SHA256
+    var digest = hmacSha256.convert(bytes);
 
-      return digest.toString();
-    }
+    return digest.toString();
   }
 }
