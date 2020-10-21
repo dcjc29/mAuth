@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:example/auth_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:mAuth/mAuth.dart';
 
@@ -37,7 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     setState(() {
       //replace YOUR_URL with mongo db url
-      _mongoDB = MongoDB(url: "YOUR_URL");
+      _mongoDB = MongoDB(
+          url:
+              "YOUR_URL");
     });
     _mongoDB.createConnection(dbObject: _mongoDB).then((value) => log(value));
   }
@@ -55,6 +58,14 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'DB Initialized',
             ),
+            RaisedButton(
+                child: Text("authentication"),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AuthFunctions()),
+                  );
+                })
           ],
         ),
       ),
