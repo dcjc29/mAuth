@@ -7,8 +7,13 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  var instance;
   MongoAuth mongoAuth;
+  @override
+  void initState() {
+    super.initState();
+    mongoAuth = new MongoAuth();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +23,23 @@ class _RegisterState extends State<Register> {
       body: Container(
         child: Column(
           children: [
-            RaisedButton(child: Text("Trigger Register Func"), onPressed: () {})
+            RaisedButton(
+                child: Text("Trigger Register Func"),
+                onPressed: () {
+                  createUser();
+                })
           ],
         ),
       ),
     );
+  }
+
+  createUser() async {
+    await mongoAuth
+        .createUserWithEmailAndPassword("pamu@gmail.com", "password")
+        .then((value) {
+      String d = value;
+      print(d);
+    });
   }
 }

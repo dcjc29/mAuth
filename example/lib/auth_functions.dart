@@ -9,17 +9,14 @@ class AuthFunctions extends StatefulWidget {
 }
 
 class AuthFunctionsState extends State<AuthFunctions> {
-  var instance;
   MongoAuth mongoAuth;
 
   @override
   void initState() {
     super.initState();
     mongoAuth = new MongoAuth();
-    instance = MongoDB.getInstance();
-    print("Instance ${instance.toString()}");
-    MongoUser user = new MongoUser(
-        email: "pamuditha@gmail", password: "123", name: "Maduranga");
+    // MongoUser user = new MongoUser(
+    //     email: "pamuditha@gmail", password: "123", name: "Maduranga");
     // mongoAuth.addCollection(user);
   }
 
@@ -46,8 +43,9 @@ class AuthFunctionsState extends State<AuthFunctions> {
   }
 
   forgotpassword() async {
-    await mongoAuth
-        .forgotPassword("pamu@gmail")
-        .then((value) => print("Print ${value}"));
+    await mongoAuth.forgotPassword("pamu@gmail").then((value) {
+      String user = value;
+      print(user);
+    });
   }
 }
