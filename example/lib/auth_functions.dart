@@ -35,7 +35,7 @@ class AuthFunctionsState extends State<AuthFunctions> {
                   forgotpassword();
                   // Future<MongoUser> emailvalidation =
                   //     mongoAuth.forgotPassword("pamu@gmail");
-                })
+                }),
           ],
         ),
       ),
@@ -43,7 +43,7 @@ class AuthFunctionsState extends State<AuthFunctions> {
   }
 
   forgotpassword() async {
-    await mongoAuth.forgotPassword("pamu@gmail").then((value) {
+    await mongoAuth.forgotPassword("pamudithamaduranga@gmail.com").then((value) {
       String user = value;
       print(user);
     });
