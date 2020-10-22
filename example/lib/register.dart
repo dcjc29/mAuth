@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
 
   createUser() async {
     await mongoAuth
-        .createUserWithEmailAndPassword("pamu@gmail.com", "password")
+        .createUserWithEmailAndPassword("pamu@gmail.com", "password", "mali")
         .then((value) {
       String d = value;
       print(d);

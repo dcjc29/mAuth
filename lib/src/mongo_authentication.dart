@@ -10,7 +10,11 @@ class MongoAuth {
 
   addCollection(MongoUser user) async {
     final MongoUser usermodel = new MongoUser(
-        email: user.email, password: user.password, name: user.name);
+        email: user.email,
+        password: user.password,
+        name: user.name,
+        username: user.username,
+        uid: user.uid);
     final Map<String, dynamic> data = usermodel.toMap();
     await collection.insert(data);
   }
@@ -38,20 +42,19 @@ class MongoAuth {
   }
 
   Future<String> createUserWithEmailAndPassword(
-      String email, String password) async {
+      String email, String password, String name) async {
     try {
       Map<String, dynamic> doc = await collection.findOne({"email": email});
       if (doc != null) {
-        return "Already_Have_an_Account_entred_Email";
+        return "email-already-in-use";
       } else {
         var hashpass = services.hashPassword(password);
-        var uid = services.uidGenarate();
-        print(uid);
+        var userId = services.uidGenarate();
         MongoUser user = new MongoUser(
           email: email,
-          name: "Dinu",
+          name: name,
           password: hashpass,
-          uid: uid,
+          uid: userId,
         );
         await addCollection(user);
 
@@ -65,4 +68,6 @@ class MongoAuth {
       return e.toString();
     }
   }
+
+  Future<String> signOut() async {}
 }
