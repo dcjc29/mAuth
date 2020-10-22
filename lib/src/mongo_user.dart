@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class MongoUser {
   String id;
   String email;
@@ -9,12 +11,12 @@ class MongoUser {
   String tempCode;
 
   MongoUser(
-      {this.email,
-      this.password,
-      this.name,
+      {@required this.email,
+      @required this.password,
+      @required this.name,
       this.username,
       this.uid,
-      this.claims,})
+      this.claims})
       : assert(email != null, "Email is null"),
         assert(password != null, "Password is null"),
         assert(name != null, "Name is null");

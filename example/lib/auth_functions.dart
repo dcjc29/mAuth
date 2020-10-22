@@ -15,9 +15,8 @@ class AuthFunctionsState extends State<AuthFunctions> {
   void initState() {
     super.initState();
     mongoAuth = new MongoAuth();
-    // MongoUser user = new MongoUser(
-    //     email: "pamuditha@gmail", password: "123", name: "Maduranga");
-    // mongoAuth.addCollection(user);
+    MongoUser user = new MongoUser(email: "pamuditha@gmail.com", password: "123", name: "Maduranga", username: "pamu47",uid: "cvdvddds");
+    mongoAuth.addCollection(user);
   }
 
   @override

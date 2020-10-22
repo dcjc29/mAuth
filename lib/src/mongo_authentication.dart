@@ -10,7 +10,7 @@ class MongoAuth {
 
   addCollection(MongoUser user) async {
     final MongoUser usermodel = new MongoUser(
-        email: user.email, password: user.password, name: user.name);
+        email: user.email, password: user.password, name: user.name, username: user.username, uid: user.uid);
     final Map<String, dynamic> data = usermodel.toMap();
     await collection.insert(data);
   }
