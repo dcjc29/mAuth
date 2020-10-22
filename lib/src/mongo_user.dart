@@ -1,4 +1,5 @@
 class MongoUser {
+  String id;
   String email;
   String password;
   String name;
@@ -13,14 +14,13 @@ class MongoUser {
       this.name,
       this.username,
       this.uid,
-      this.claims,
-      this.tempCode})
+      this.claims,})
       : assert(email != null, "Email is null"),
         assert(password != null, "Password is null"),
-        assert(name != null, "Name is null"),
-        assert(uid != null, "Name is null");
+        assert(name != null, "Name is null");
 
   MongoUser.map(dynamic user) {
+    this.id = user['_id'];
     this.email = user['email'];
     this.password = user['password'];
     this.name = user['name'];
@@ -32,13 +32,14 @@ class MongoUser {
 
   Map<String, dynamic> toMap() {
     var map = new Map<String, dynamic>();
-    if (uid != null) {
-      map['uid'] = uid;
+    if (id != null) {
+      map['_id'] = id;
     }
     map['email'] = email;
     map['password'] = password;
     map['name'] = name;
     map['username'] = username;
+    map['uid'] = uid;
     map['claims'] = claims;
     map['tempCode'] = tempCode;
 
@@ -46,14 +47,15 @@ class MongoUser {
   }
 
   MongoUser.fromMap(Map<String, dynamic> map) {
-    if (map["uid"] != null) {
-      this.uid = map['uid'];
+    if (map["_id"] != null) {
+      this.id = map['_id'];
     }
     this.email = map['email'];
     this.password = map['password'];
     this.name = map['name'];
     this.username = map['username'];
     this.claims = map['claims'];
+    this.uid = map['uid'];
     this.tempCode = map['tempCode'];
   }
 }
