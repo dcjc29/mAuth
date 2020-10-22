@@ -33,8 +33,8 @@ class Services {
     email,
     code,
   ) async {
-    String userName = "pamudithamaduranga2@gmail.com";
-    String mailPassword = "hitman.040147";
+    String userName = "mAuthEmail";
+    String mailPassword = "****";
 
     final smtpServer = gmail(userName, mailPassword);
 
