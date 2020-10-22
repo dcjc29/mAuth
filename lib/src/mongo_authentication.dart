@@ -23,6 +23,7 @@ class MongoAuth {
       } else {
         doc["tempCode"] = services.tempCodeGenerator();
         await collection.save(doc);
+        await services.sendTempCode(email, doc["tempCode"]);
         return "USER_FOUND";
         // ignore: todo
         //TODO: send email.

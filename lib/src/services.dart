@@ -29,19 +29,12 @@ class Services {
     return uid;
   }
 
-  //email means code eka yana mail eka
-  //sendMailAddress means code eka yawana address eka - dev address
-  //passwrd means yawana mail eke password neda bn?
-  //code eka means ithin genrate karna code eka
-
   Future<dynamic> sendTempCode(
-    String email,
-    String password,
-    String sendMailAddress,
-    String code,
+    email,
+    code,
   ) async {
-    String userName = sendMailAddress;
-    String mailPassword = password;
+    String userName = "mAuthEmail";
+    String mailPassword = "****";
 
     final smtpServer = gmail(userName, mailPassword);
 
@@ -49,8 +42,8 @@ class Services {
       ..from = Address(userName)
       ..recipients.add(email)
       ..subject = 'Password Reset Code'
-      // ignore: unnecessary_brace_in_string_interps
-      ..text = 'This is your Password reset code ${code}';
+      ..html =
+          "<p>Someone (hopefully you) has requested a password reset for your account on (platform name).Use this code in your application to reset your password,</p><h2>$code</h2><br/>Thank you for using our service.<br/><br/><small>Powered by mAuth</small>";
 
     try {
       final sendReport = await send(message, smtpServer);
