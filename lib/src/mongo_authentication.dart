@@ -68,4 +68,6 @@ class MongoAuth {
       return e.toString();
     }
   }
+
+  Future<String> signOut() async {}
 }
